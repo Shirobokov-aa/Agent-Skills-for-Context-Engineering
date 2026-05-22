@@ -1,6 +1,6 @@
 # Agent Skills for Context Engineering
 
-A comprehensive, open collection of Agent Skills focused on context engineering principles for building production-grade AI agent systems. These skills teach the art and science of curating context to maximize agent effectiveness across any agent platform.
+A comprehensive, open collection of Agent Skills focused on context engineering and harness engineering principles for building production-grade AI agent systems. These skills teach the art and science of curating context, designing agent operating loops, and evaluating agent behavior across any agent platform.
 
 [DeepWiki: Learn more here](https://deepwiki.com/muratcankoylan/Agent-Skills-for-Context-Engineering)
 
@@ -53,6 +53,7 @@ These skills address the ongoing operation and optimization of agent systems.
 | [latent-briefing](skills/latent-briefing/) | Share task-relevant orchestrator state with workers via task-guided KV cache compaction when the worker runtime is controllable |
 | [evaluation](skills/evaluation/) | Build evaluation frameworks for agent systems |
 | [advanced-evaluation](skills/advanced-evaluation/) | Master LLM-as-a-Judge techniques: direct scoring, pairwise comparison, rubric generation, and bias mitigation |
+| [harness-engineering](skills/harness-engineering/) | Design autonomous agent harnesses with locked metrics, durable logs, novelty gates, rollback, and human approval boundaries |
 
 ### Development Methodology
 
@@ -114,26 +115,27 @@ Option B - Direct install via command:
 /plugin install context-engineering@context-engineering-marketplace
 ```
 
-This installs all 14 skills in a single plugin. Skills are activated automatically based on your task context.
+This installs all 15 skills in a single plugin. Skills are activated automatically based on your task context.
 
-### Skill Triggers
+### Skill Activation Scenarios
 
-| Skill | Triggers On |
-|-------|-------------|
-| `context-fundamentals` | "understand context", "explain context windows", "design agent architecture" |
-| `context-degradation` | "diagnose context problems", "fix lost-in-middle", "debug agent failures" |
-| `context-compression` | "compress context", "summarize conversation", "reduce token usage" |
-| `context-optimization` | "optimize context", "reduce token costs", "implement KV-cache" |
-| `latent-briefing` | "KV cache compaction between agents", "worker KV memory handoff", "latent briefing", "share trajectory without summarization" |
-| `multi-agent-patterns` | "design multi-agent system", "implement supervisor pattern" |
-| `memory-systems` | "implement agent memory", "build knowledge graph", "track entities" |
-| `tool-design` | "design agent tools", "reduce tool complexity", "implement MCP tools" |
-| `filesystem-context` | "offload context to files", "dynamic context discovery", "agent scratch pad", "file-based context" |
-| `hosted-agents` | "build background agent", "create hosted coding agent", "sandboxed execution", "multiplayer agent", "Modal sandboxes" |
-| `evaluation` | "evaluate agent performance", "build test framework", "measure quality" |
-| `advanced-evaluation` | "implement LLM-as-judge", "compare model outputs", "mitigate bias" |
-| `project-development` | "start LLM project", "design batch pipeline", "evaluate task-model fit" |
-| `bdi-mental-states` | "model agent mental states", "implement BDI architecture", "transform RDF to beliefs", "build cognitive agent" |
+| Skill | Activate When |
+|-------|---------------|
+| `context-fundamentals` | Establishing context-window mental models, planning agent architecture, or explaining how context components affect model behavior |
+| `context-degradation` | Diagnosing attention failures, context poisoning, lost-in-middle behavior, or degraded agent performance across long sessions |
+| `context-compression` | Preserving useful state while reducing conversation, tool-output, or trajectory size under context pressure |
+| `context-optimization` | Improving token efficiency, retrieval precision, prefix reuse, masking, partitioning, or budget allocation for agent systems |
+| `latent-briefing` | Sharing orchestrator trajectory with workers via task-guided KV cache compaction when the worker runtime is controllable and the models are compatible |
+| `multi-agent-patterns` | Choosing coordination patterns, isolating context across agents, designing handoffs, or evaluating whether parallel agents are justified |
+| `memory-systems` | Persisting cross-session knowledge, tracking entities over time, choosing memory frameworks, or designing retrieval and update semantics |
+| `tool-design` | Defining agent-tool contracts, consolidating tool surfaces, improving descriptions, or making tool errors actionable |
+| `filesystem-context` | Moving large or durable context into files, creating scratchpads, supporting just-in-time discovery, or coordinating agents through shared artifacts |
+| `hosted-agents` | Running coding agents in remote sandboxes, background environments, warm pools, or multiplayer agent infrastructure |
+| `evaluation` | Creating deterministic checks, rubrics, regression suites, production monitoring, or quality gates for agent behavior |
+| `advanced-evaluation` | Using LLM judges, pairwise comparison, calibration, bias mitigation, or human-aligned quality assessment |
+| `harness-engineering` | Designing autonomous loops with locked evaluators, editable surfaces, durable logs, novelty gates, rollback, and approval boundaries |
+| `project-development` | Deciding whether an LLM is appropriate, shaping batch pipelines, creating staged artifacts, or estimating operational cost |
+| `bdi-mental-states` | Modeling beliefs, desires, intentions, rational action traces, or neuro-symbolic state transformations for agents |
 
 <img width="1014" height="894" alt="Screenshot 2025-12-26 at 12 34 47 PM" src="https://github.com/user-attachments/assets/f79aaf03-fd2d-4c71-a630-7027adeb9bfe" />
 
@@ -154,7 +156,7 @@ curl -o .claude/skills/context-fundamentals.md \
   https://raw.githubusercontent.com/muratcankoylan/Agent-Skills-for-Context-Engineering/main/skills/context-fundamentals/SKILL.md
 ```
 
-Available skills: `context-fundamentals`, `context-degradation`, `context-compression`, `context-optimization`, `latent-briefing`, `multi-agent-patterns`, `memory-systems`, `tool-design`, `filesystem-context`, `hosted-agents`, `evaluation`, `advanced-evaluation`, `project-development`, `bdi-mental-states`
+Available skills: `context-fundamentals`, `context-degradation`, `context-compression`, `context-optimization`, `latent-briefing`, `multi-agent-patterns`, `memory-systems`, `tool-design`, `filesystem-context`, `hosted-agents`, `evaluation`, `advanced-evaluation`, `harness-engineering`, `project-development`, `bdi-mental-states`
 
 ### For Custom Implementations
 
@@ -170,6 +172,7 @@ The [examples](examples/) folder contains complete system designs that demonstra
 | [x-to-book-system](examples/x-to-book-system/) | Multi-agent system that monitors X accounts and generates daily synthesized books | multi-agent-patterns, memory-systems, context-optimization, tool-design, evaluation |
 | [llm-as-judge-skills](examples/llm-as-judge-skills/) | Production-ready LLM evaluation tools with TypeScript implementation, 19 passing tests | advanced-evaluation, tool-design, context-fundamentals, evaluation |
 | [book-sft-pipeline](examples/book-sft-pipeline/) | Train models to write in any author's style. Includes Gertrude Stein case study with 70% human score on Pangram, $2 total cost | project-development, context-compression, multi-agent-patterns, evaluation |
+| [interleaved-thinking](examples/interleaved-thinking/) | Reasoning trace optimizer that captures, analyzes, and converts agent failure patterns into generated skills | evaluation, advanced-evaluation, context-degradation, harness-engineering |
 
 Each example includes:
 - Complete PRD with architecture decisions
@@ -206,6 +209,82 @@ The [book-sft-pipeline](examples/book-sft-pipeline/) example demonstrates traini
 - **Validation Methodology**: Modern scenario testing proves style transfer vs content memorization
 
 Integrates with context engineering skills: project-development, context-compression, multi-agent-patterns, evaluation.
+
+## Researcher Operating System
+
+The [researcher](researcher/) directory is a file-based operating system for turning external research into skill changes. It exists so this repository can act as a compounding source of truth instead of an anthology.
+
+### Measured router-benchmark results
+
+The skill router (which decides whether the right skill gets loaded for a given task) has been benchmarked end-to-end against four frontier models via the [Cursor SDK](https://cursor.com/docs/sdk/typescript). Three full sweeps (50 prompts x 4 models x 3 replications = 600 calls each):
+
+- Baseline: [`researcher/benchmarks/router/results-published/2026-05-15.md`](researcher/benchmarks/router/results-published/2026-05-15.md)
+- After targeted description rewrites: [`researcher/benchmarks/router/results-published/2026-05-15-v2.md`](researcher/benchmarks/router/results-published/2026-05-15-v2.md) (includes delta-vs-baseline)
+- After corpus-wide hardening: [`researcher/benchmarks/router/results-published/2026-05-19.md`](researcher/benchmarks/router/results-published/2026-05-19.md) (600/600 usable records, 0 format failures)
+
+Per-skill effect size for the three skills the data flagged:
+
+| Skill | Baseline top-1 | After rewrite | Delta |
+| --- | --- | --- | --- |
+| `context-fundamentals` | 0.255 | 0.489 | +23.4pp |
+| `project-development` | 0.750 | 1.000 | +25pp (now perfect) |
+| `tool-design` | 0.729 | 0.807 | +7.8pp |
+
+Per-model top-1 accuracy after the corpus-wide hardening pass:
+
+| Model | Top-1 | Top-3 |
+| --- | --- | --- |
+| gemini-3.1-pro | 0.920 | 0.933 |
+| composer-2 | 0.913 | 0.947 |
+| gpt-5.5 | 0.913 | 0.973 |
+| claude-opus-4-7 | 0.840 | 0.933 |
+
+Reproduce any of these numbers exactly via the runner under `researcher/benchmarks/sdk-runner/`.
+
+### What it includes
+
+- **Source registry** (`researcher/source-registry.md`): priority sources, exclusion rules, monitoring queries.
+- **Rubrics** (`researcher/rubrics/`): content curation, skill change, harness change, pairwise skill revision.
+- **Mechanism registry** (`researcher/mechanisms/registry.jsonl` + `ledgers/`): 16 accepted behavior changes used as the primary novelty signal, with append-only accepted/rejected ledgers for institutional memory.
+- **Claim provenance** (`researcher/claims/index.jsonl`): 12 provenance-tracked claims with source URL, evidence strength, volatility, and last reviewed date.
+- **Corpus index** (`researcher/corpus/index.json`): canonical machine-readable map of skills, activation scenarios, mechanism IDs, and claim IDs.
+- **Run state machine** (`researcher/runs/<run-id>/run-state.json`): `initialized -> retrieved -> evaluated -> proposed -> novelty_checked -> validated -> pr_ready -> closed`.
+- **Activation regression tests** (`researcher/fixtures/activation-cases.jsonl`): 19 deterministic prompts that catch skill-boundary confusion.
+- **Adversarial benchmark harness** (`researcher/benchmarks/`): scenarios that try to game the loop (duplicate mechanisms, unretrieved evidence, wrong rubric math, self-approved rubric changes, weak-evidence novelty).
+- **Continuous loop** (`researcher/scripts/loop_*.py` + `researcher/orchestration/launchd/`): inbox, source discovery, one-state-at-a-time advancement, daily ops, parked review queue, launchd service definitions.
+- **Skill health gate** (`researcher/scripts/skill_health.py`): deterministic body-quality scoring; current strict corpus score is 0.9117 with 0 flagged skills.
+
+### Operator commands
+
+```bash
+# Deterministic gates (also run in CI on every PR)
+python3 researcher/scripts/validate_repo.py --strict
+python3 researcher/scripts/skill_health.py --strict --no-history
+python3 researcher/scripts/run_benchmarks.py
+python3 researcher/scripts/check_activation_cases.py
+
+# Per-run readiness (active runs only)
+python3 researcher/scripts/validate_run.py --run-dir researcher/runs/<run-id>
+
+# Continuous loop, manual
+python3 researcher/scripts/loop_discover.py
+python3 researcher/scripts/loop_step.py --allow-fetch
+python3 researcher/scripts/loop_daily.py
+python3 researcher/scripts/loop_status.py
+
+# Continuous loop, daemon (macOS)
+researcher/orchestration/launchd/install.sh    # install launchd jobs (10-min step, 12h discover, daily ops)
+researcher/orchestration/launchd/uninstall.sh  # remove launchd jobs
+```
+
+See [researcher/runbooks/continuous-operation.md](researcher/runbooks/continuous-operation.md) for daemon details, budgets, and the human review surface.
+
+### Guarantees
+
+- The loop never invokes paid LLMs or makes outbound writes; HTTP retrieval is stdlib-only with a 1.5 MB cap and a 30-second timeout.
+- Mechanism promotion requires a recorded human reviewer and a passing run-readiness check.
+- All queue mutations are atomic (temp file + `os.replace`) and serialized via `fcntl` locks.
+- Agents may prepare PRs after gates pass; merge and push remain human-controlled.
 
 ## Star History
 <img width="3664" height="2648" alt="star-history-2026317" src="https://github.com/user-attachments/assets/0fe53d8d-7fdd-45be-9c28-057881b23b44" />
